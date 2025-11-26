@@ -7,7 +7,7 @@
 void arrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize) {
     size_t totalSize = stride * incrementSize;
 
-    auto arrayPointer = malloc(totalSize);
+    void* arrayPointer = malloc(totalSize);
     if (arrayPointer == NULL) {
         exit(70);
     }
@@ -34,7 +34,7 @@ void* arrayList_get(ArrayList* array, const int index) {
 void arrayList_put(ArrayList* array, void* elem) {
     if (array->arrayPosition+1 > array->arrayLength) {
         // Array is not long enough
-        auto newArrayPointer = realloc(array->array, array->arrayLength+array->arrayResetSize*array->elementSize);
+        void* newArrayPointer = realloc(array->array, array->arrayLength+array->arrayResetSize*array->elementSize);
         if (newArrayPointer == NULL) {
             exit(70);
         }
@@ -65,8 +65,8 @@ void arrayList_remove(ArrayList* array, const int index) {
     array->arrayPosition--;
 
     if (array->arrayPosition-1 <= array->arrayLength) { // If possible reduce size
-        // Will reduce the array size                                   Array actual size            -          Reset actual Size
-        auto newArrayPointer = realloc(array->array, (array->elementSize*array->arrayLength)-(array->arrayResetSize*array->elementSize));
+        // Will reduce the array size                           Array actual size            -          Reset actual Size
+        void* newArrayPointer = realloc(array->array, (array->elementSize*array->arrayLength)-(array->arrayResetSize*array->elementSize));
         if (newArrayPointer == NULL) {
             exit(70);
         }
