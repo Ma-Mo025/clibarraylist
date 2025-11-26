@@ -4,8 +4,8 @@
  * # ArrayList
  * Is a structure that work similarly to a array but you can add infinite elements to it (as long as you have ram)
  */
-#ifndef ARRAYLIST
-#define ARRAYLIST
+#ifndef LIB_ARRAYLIST
+#define LIB_ARRAYLIST
 #include <stddef.h>
 
 typedef struct {
@@ -56,4 +56,4 @@ void arrayList_remove(ArrayList* array, int index);
  */
 void arrayList_free(const ArrayList* array);
 
-#endif // !ARRAYLIST
+#endif // !LIB_ARRAYLIST
