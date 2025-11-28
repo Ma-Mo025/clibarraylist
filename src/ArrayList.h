@@ -22,38 +22,38 @@ typedef struct {
  * @input array The reference to the ArrayList structure to initialize
  * @input incrementSize The dimention to add/remove from the ArrayList (default to 1)
  */
-#define arrayList_init(type, array, ...) arrayList_init_imp(sizeof(type), array, (1, ##__VA_ARGS__))
-void arrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize);
+#define ArrayList_init(type, array, ...) ArrayList_init_imp(sizeof(type), array, (1, ##__VA_ARGS__))
+void ArrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize);
 
 /**
  * @param array The ArrayList
  * @return The length of the ArrayList
  */
-int arrayList_length(ArrayList* array);
+int ArrayList_length(ArrayList* array);
 
 /**
  * @param array The array
  * @param index The index of the element you want
  * @return The element at the index
  */
-void* arrayList_get(ArrayList* array, int index);
+void* ArrayList_get(ArrayList* array, int index);
 
 /**
  * @param array The array
  * @param elem The element you want to insert
  */
-void arrayList_put(ArrayList* array, void* elem);
+void ArrayList_put(ArrayList* array, void* elem);
 
 /**
  * @param array The array
  * @param index The index of the element
  */
-void arrayList_remove(ArrayList* array, int index);
+void ArrayList_remove(ArrayList* array, int index);
 
 /**
  * Function to free and eliminate the vector
  * @param array The array to free
  */
-void arrayList_free(const ArrayList* array);
+void ArrayList_free(const ArrayList* array);
 
 #endif // !LIB_ARRAYLIST

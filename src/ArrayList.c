@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-void arrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize) {
+void ArrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize) {
     size_t totalSize = stride * incrementSize;
 
     void* arrayPointer = malloc(totalSize);
@@ -19,7 +19,7 @@ void arrayList_init_imp(size_t stride, ArrayList* array, size_t incrementSize) {
     array->arrayPosition = 0;
 }
 
-int arrayList_length(ArrayList* array) {
+int ArrayList_length(ArrayList* array) {
     if (array->arrayPosition > INT32_MAX) {
         return INT32_MAX;
     }
@@ -27,11 +27,11 @@ int arrayList_length(ArrayList* array) {
     return array->arrayPosition;
 }
 
-void* arrayList_get(ArrayList* array, const int index) {
+void* ArrayList_get(ArrayList* array, const int index) {
     return array->array+index*array->elementSize;
 }
 
-void arrayList_put(ArrayList* array, void* elem) {
+void ArrayList_put(ArrayList* array, void* elem) {
     if (array->arrayPosition+1 > array->arrayLength) {
         // Array is not long enough
         void* newArrayPointer = realloc(array->array, array->arrayLength+array->arrayResetSize*array->elementSize);
@@ -48,7 +48,7 @@ void arrayList_put(ArrayList* array, void* elem) {
     array->arrayPosition++;
 }
 
-void arrayList_remove(ArrayList* array, const int index) {
+void ArrayList_remove(ArrayList* array, const int index) {
     // Underflow
     if (array->arrayLength == 0 || array->arrayPosition == 0)
         return;
@@ -77,6 +77,6 @@ void arrayList_remove(ArrayList* array, const int index) {
 }
 
 
-void arrayList_free(const ArrayList* array) {
+void ArrayList_free(const ArrayList* array) {
     free(array->array);
 }
